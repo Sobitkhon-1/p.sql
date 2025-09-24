@@ -8,11 +8,18 @@ importers:
 
   .:
     dependencies:
+      dotenv:
+        specifier: ^17.2.2
+        version: 17.2.2
       pg:
         specifier: ^8.16.3
         version: 8.16.3
 
 packages:
+
+  dotenv@17.2.2:
+    resolution: {integrity: sha512-Sf2LSQP+bOlhKWWyhFsn0UsfdK/kCWRv1iuA2gXAwt3dyNabr6QSj00I2V10pidqz69soatm9ZwZvpQMTIOd5Q==}
+    engines: {node: '>=12'}
 
   pg-cloudflare@1.2.7:
     resolution: {integrity: sha512-YgCtzMH0ptvZJslLM1ffsY4EuGaU0cx4XSdXLRFae8bPP4dS5xL1tNB3k2o/N64cHJpwU7dxKli/nZ2lUa5fLg==}
@@ -73,6 +80,8 @@ packages:
     engines: {node: '>=0.4'}
 
 snapshots:
+
+  dotenv@17.2.2: {}
 
   pg-cloudflare@1.2.7:
     optional: true
