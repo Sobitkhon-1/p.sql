@@ -36,9 +36,7 @@ CREATE TRIGGER after_transaction_insert
 AFTER INSERT ON transactions
 FOR EACH ROW
 EXECUTE FUNCTION update_balance();*/
--- Create tables first
--- Create tables if they do not exist
--- Create tables if they do not exist
+
 CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
     username VARCHAR(32) NOT NULL UNIQUE,
@@ -53,13 +51,9 @@ CREATE TABLE IF NOT EXISTS transactions (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Drop trigger first if it exists
 DROP TRIGGER IF EXISTS after_transaction_insert ON transactions;
-
--- Drop function after dropping trigger
 DROP FUNCTION IF EXISTS update_balance();
 
--- Create or replace trigger function
 CREATE OR REPLACE FUNCTION update_balance()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -75,7 +69,6 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Create trigger
 CREATE TRIGGER after_transaction_insert
 AFTER INSERT ON transactions
 FOR EACH ROW
